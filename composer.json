@@ -1,0 +1,37 @@
+{
+    "name": "darvinstudio/omnipay-network-genius",
+    "description": "Omnipay gateway for ngenius",
+    "type": "library",
+    "keywords": [
+        "gateway",
+        "merchant",
+        "omnipay",
+        "payment",
+        "pay",
+        "ngenius"
+    ],
+    "homepage": "https://github.com/darvinstudio/omnipay-network-genius",
+    "license": "MIT",
+    "authors": [
+        {
+            "name":     "Darvin Studio",
+            "email":    "info@darvin-studio.ru",
+            "homepage": "https://www.darvin-studio.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "league/omnipay": "^3"
+    },
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Omnipay\\NetworkGenius\\": "src"
+        }
+    },
+    "autoload-dev": {},
+    "scripts": {},
+    "extra": {},
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
