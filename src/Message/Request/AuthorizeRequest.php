@@ -34,7 +34,7 @@ class AuthorizeRequest extends AbstractRequest
      */
     protected function getMethod(): string
     {
-        return sprintf('transactions/outlets/%s/orders', $this->getParameter('reference'));
+        return 'identity/auth/access-token';
     }
 
     /**
