@@ -33,12 +33,4 @@ class AuthorizeResponse extends AbstractResponse implements RedirectResponseInte
     {
         return $this->data['access_token'];
     }
-
-    /**
-     * @return string|null
-     */
-    public function getRedirectUrl(): ?string
-    {
-        return $this->getRedirectMethod();
-    }
 }

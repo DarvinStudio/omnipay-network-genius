@@ -39,14 +39,6 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
      */
     public function sendData($data)
     {
-//        $data = array_filter(
-//            $data,
-//            function ($key) {
-//                return !$this->isEmptyParameter($key);
-//            },
-//            ARRAY_FILTER_USE_KEY
-//        );
-
         $httpResponse = $this->httpClient->request(
             $this->getHttpMethod(),
             $this->getUrl(),

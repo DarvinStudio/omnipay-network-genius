@@ -29,13 +29,12 @@ class AuthorizeRequest extends AbstractRequest
         return [];
     }
 
-
     /**
      * @inheritDoc
      */
     protected function getMethod(): string
     {
-        return 'identity/auth/access-token';
+        return sprintf('transactions/outlets/%s/orders', $this->getParameter('reference'));
     }
 
     /**
