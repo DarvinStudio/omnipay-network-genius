@@ -1,4 +1,7 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
+
 /**
  * @author    Darvin Studio <info@darvin-studio.ru>
  * @copyright Copyright (c) 2023, Darvin Studio
@@ -22,6 +25,17 @@ class CompletePurchaseResponse extends AbstractResponse
      */
     public function isSuccessful(): bool
     {
-        return '0' === $this->getCode() && 2 === $this->data['orderStatus'];
+        return $this->getOrderStatus() === 'PURCHASED';
+    }
+
+    public function isFail(): bool
+    {
+        return  $this->getOrderStatus() === 'FAILED';
+    }
+
+
+    public function isCanceled(): bool
+    {
+        return  $this->getOrderStatus() === 'CANCELLED';
     }
 }

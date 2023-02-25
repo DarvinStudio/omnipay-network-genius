@@ -20,31 +20,15 @@ trait CompleteResponseTrait
      */
     public function getOrderNumber()
     {
-        return $this->data['orderNumber'] ?? null;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getOrderStatus(): ?int
-    {
-        return $this->data['orderStatus'] ?? null;
-    }
-
-    /**
-     * @return int
-     */
-    public function getActionCode(): string
-    {
-        return $this->data['actionCode'];
+        return $this->data['merchantAttributes']['merchantOrderReference'] ?? null;
     }
 
     /**
      * @return string|null
      */
-    public function getActionCodeDescription(): ?string
+    public function getOrderStatus(): ?string
     {
-        return $this->data['actionCodeDescription'] ?? null;
+        return $this->data['_embedded']['payment']['0']['state'] ?? null;
     }
 
     /**
@@ -52,7 +36,7 @@ trait CompleteResponseTrait
      */
     public function getAmount(): string
     {
-        return $this->data['amount'];
+        return $this->data['amount']['value'];
     }
 
     /**
@@ -60,94 +44,6 @@ trait CompleteResponseTrait
      */
     public function getCurrency(): ?string
     {
-        return $this->data['currency'] ?? null;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDate(): string
-    {
-        return $this->data['date'];
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getOrderDescription(): ?string
-    {
-        return $this->data['orderDescription'] ?? null;
-    }
-
-    /**
-     * @return string
-     */
-    public function getIp(): string
-    {
-        return $this->data['ip'];
-    }
-
-    /**
-     * @return string|null
-     */
-    public function refundedDate(): ?string
-    {
-        return $this->data['refundedDate'] ?? null;
-    }
-
-    /**
-     * @return array
-     */
-    public function getMerchantOrderParams(): array
-    {
-        return $this->data['merchantOrderParams'] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getCardAuthInfo(): array
-    {
-        return $this->data['cardAuthInfo'] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getSecureAuthInfo(): array
-    {
-        return $this->data['secureAuthInfo'] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getBindingInfo(): array
-    {
-        return $this->data['bindingInfo'] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getPaymentAmountInfo(): array
-    {
-        return $this->data['paymentAmountInfo'] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getBankInfo(): array
-    {
-        return $this->data['bankInfo'] ?? [];
-    }
-
-    /**
-     * @return array
-     */
-    public function getPayerData(): array
-    {
-        return $this->data['payerData'] ?? [];
+        return $this->data['amount']['currency'] ?? null;
     }
 }
