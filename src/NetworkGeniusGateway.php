@@ -17,6 +17,7 @@ use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Exception\BadMethodCallException;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\NetworkGenius\Message\Request\AuthorizeRequest;
+use Omnipay\NetworkGenius\Message\Request\CompletePurchaseRequest;
 use Omnipay\NetworkGenius\Message\Request\PurchaseRequest;
 
 /**
@@ -117,6 +118,16 @@ class NetworkGeniusGateway extends AbstractGateway
         return  $this->getParameter('url');
     }
 
+    public function setHeaderToken(?string  $headerToken): self
+    {
+        return  $this->setParameter('headerToken', $headerToken);
+    }
+
+    public function getHeaderToken(): ?string
+    {
+        return  $this->getParameter('headerToken');
+    }
+
 
     /**
      * @inheritDoc
@@ -147,7 +158,7 @@ class NetworkGeniusGateway extends AbstractGateway
      */
     public function completePurchase(array $options = []): RequestInterface
     {
-        throw new BadMethodCallException(sprintf('Method "%s" is not supported', __FUNCTION__));
+        return $this->createRequest(CompletePurchaseRequest::class, $options);
     }
 
     /**
