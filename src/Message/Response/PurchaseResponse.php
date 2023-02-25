@@ -32,4 +32,9 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
     {
         return $this->data['_links']['payment']['href'] ?? null;
     }
+
+    public function getTransactionReference(): ?string
+    {
+        return $this->data['reference'];
+    }
 }

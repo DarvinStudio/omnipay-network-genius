@@ -33,4 +33,19 @@ class AuthorizeResponse extends AbstractResponse implements RedirectResponseInte
     {
         return $this->data['access_token'];
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function isSuccessful(): bool
+    {
+        return !empty($this->data['access_token']) ?? false;
+    }
+
+    public function getSessionTimeout(): ?int
+    {
+        return  (int)$this->data['expires_in'] ?? 300;
+    }
+
+
 }
