@@ -23,37 +23,38 @@ class PurchaseRequest extends AbstractRequest
 {
     /**
      * @return array
-     */
-    protected function getHeaders(): array
-    {
-        return [
-            "content-type"  => 'application/vnd.ni-payment.v2+json',
-            "accept"        => 'application/vnd.ni-payment.v2+json',
-            "Authorization" => sprintf("Bearer %s", $this->getParameter('authToken')),
-        ];
-    }
-
-    /**
-     * @return array
      *
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
     public function getData(): array
     {
         return [
-            'action'             => 'PURCHASE',
-            'amount'             => [
+            'action'                 => 'PURCHASE',
+            'amount'                 => [
                 'currencyCode' => $this->getParameter('currencyCode'),
                 'value'        => (int)$this->getParameter('amount'),
             ],
-            'emailAddress'       => $this->getParameter('emailAddress'),
-            'language'           =>  $this->getParameter('language'),
-            'merchantAttributes' => [
-                'redirectUrl'            => $this->getParameter('redirectUrl'),
-                'cancelUrl'              => $this->getParameter('cancelUrl'),
-                'merchantOrderReference' => $this->getParameter('merchantOrderReference'),
+            'emailAddress'           => $this->getParameter('emailAddress'),
+            'language'               => $this->getParameter('language'),
+            'merchantOrderReference' => $this->getParameter('merchantOrderReference'),
+            'merchantAttributes'     => [
+                'redirectUrl'          => $this->getParameter('redirectUrl'),
+                'skipConfirmationPage' => true,
+                'cancelUrl'            => $this->getParameter('cancelUrl'),
             ],
 
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getHeaders(): array
+    {
+        return [
+            "Authorization" => sprintf("Bearer %s", $this->getParameter('authToken')),
+            "Content-Type"  => 'application/vnd.ni-payment.v2+json',
+            "Accept"        => 'application/vnd.ni-payment.v2+json',
         ];
     }
 
