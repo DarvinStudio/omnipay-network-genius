@@ -103,7 +103,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     {
         return [
             "content-type"  => 'application/vnd.ni-identity.v1+json',
-            "accept"        => 'application/vnd.ni-identity.v1+json',
+            "Accept"        => 'application/vnd.ni-identity.v1+json',
             "Authorization" => sprintf("Basic %s", $this->getParameter('authKey')),
         ];
     }
