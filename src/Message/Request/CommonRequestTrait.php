@@ -233,4 +233,22 @@ trait CommonRequestTrait
     {
         return $this->setParameter('authToken', $authToken);
     }
+
+    /**
+     * @return array|null
+     */
+    public function getBillingAddress(): ?array
+    {
+        return $this->getParameter('billingAddress');
+    }
+
+    /**
+     * @param array|null $billingAddress
+     *
+     * @return $this
+     */
+    public function setBillingAddress(?array $billingAddress): self
+    {
+        return $this->setParameter('billingAddress', $billingAddress);
+    }
 }

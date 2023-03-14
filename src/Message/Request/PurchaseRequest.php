@@ -42,7 +42,7 @@ class PurchaseRequest extends AbstractRequest
                 'skipConfirmationPage' => true,
                 'cancelUrl'            => $this->getParameter('cancelUrl'),
             ],
-
+            'billingAddress'           => $this->getParameter('billingAddress'),
         ];
     }
 
