@@ -88,7 +88,7 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
 
         return $this->getTestMode()
             ? 'https://api-gateway.sandbox.ngenius-payments.com/'
-            : 'https://api-gateway.sandbox.ngenius-payments.com/';
+            : 'https://api-gateway.ngenius-payments.com/';
     }
 
     /**
